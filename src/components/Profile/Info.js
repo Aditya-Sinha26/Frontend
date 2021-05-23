@@ -13,28 +13,24 @@ const logout = (dispatch) => {
         })
 }
 
-const Info = () => {
+const Info = ({ data }) => {
 
     const {state, dispatch} = useContext(AuthContext);
     
-    if (!state.isAuth){
-        return <Redirect to="/auth" />
-    }
-
     return <div className={classes.Info}>
         <div className={classes.Flexbox}>
             <div className={classes.Img}  />
         
         <div className={classes.Details}>
-            <div className={classes.Username}>Username  <button onClick={() => logout(dispatch)}>Logout</button></div>
+            <div className={classes.Username}>{data.user.username}  <button onClick={() => logout(dispatch)}>Logout</button></div>
             <div className={classes.Flexbox1}>
-                <span><strong>12</strong> posts</span>
-                <span><strong>153</strong> Followers</span>
-                <span><strong>200</strong> Following</span>
+                <span><strong>{data.posts.length}</strong> posts</span>
+                <span><strong>{data.user.followers.length}</strong> Followers</span>
+                <span><strong>{data.user.following.length}</strong> Following</span>
             </div>
             <div>
-                <p className={classes.Name}>Name</p>
-                <p>Bio</p>
+                <p className={classes.Name}>{data.user.name}</p>
+                <p>{data.user.bio}</p>
             </div>
         </div>
         </div>

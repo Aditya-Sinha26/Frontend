@@ -18,13 +18,23 @@ export const authentication = (email, name,username,password, dispatch, signin) 
                         username:username
                     }
                     console.log("request sent");
-                    axios.post("http://localhost:9000/createUser",user)
-                        .then(res => {
-                            dispatch(actions.authSuccess(userCredentials.user.uid));
+                    firebase.auth().currentUser.getIdToken(true).then((idToken) => {
+                        axios({
+                            url:"http://localhost:3001/user/create",
+                            method: 'POST',
+                            headers: {
+                                idToken: idToken
+                            },
+                            data: user
                         })
-                        .catch(error => {
-                            console.log(error);
-                        })
+                            .then(res => {
+                                dispatch(actions.authSuccess(userCredentials.user.uid));
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            })
+                    })
+                    
                 }else{
                     dispatch(actions.authSuccess(userCredentials.user.uid));
                 }

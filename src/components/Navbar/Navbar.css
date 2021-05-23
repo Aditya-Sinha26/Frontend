@@ -1,0 +1,9 @@
+.nav-item{
+    margin: 0 5px;
+    width: 80px;
+    box-sizing: border-box;
+}
+
+.bg-blue{
+    background-color: #04009a;
+}

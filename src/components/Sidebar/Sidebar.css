@@ -1,0 +1,50 @@
+.backdrop{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    display: block;
+    background-color: rgba(0, 0, 0, 0);
+    visibility: hidden;
+    transition: background-color 0.5s, visibility 0.5s;
+}
+
+.show{
+    
+    background-color: rgba(0, 0, 0, 0.3);
+    visibility: visible;
+}
+
+.sidebar{
+    margin: 0;
+    height: 800px;
+    position: fixed;
+    z-index: 1050;
+    max-width: 200px;
+    left: -200px;
+    transition: transform 0.5s;
+}
+
+.slide{
+    transform: translateX(200px);
+}
+
+.cross{
+    margin-top: 20px;
+}
+
+.logo{
+    margin-top: 50px;
+    padding: 10px;
+}
+
+.list-group{
+    margin-top: 20px;
+}
+
+.list-group-item{
+    border-width: 0;
+    padding: 10px;
+}
