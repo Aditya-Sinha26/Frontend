@@ -1,0 +1,46 @@
+.feed-header{
+    height:7vh;
+    font-family:Sacramento;
+    position:fixed;
+    top: 0;
+    background:#FFFFFF;
+    width:100%;
+    z-index: 1;
+}
+
+.feed-body{
+    background: #dFdFdF;
+    padding-top: 50px;
+}
+
+.load {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    left: 50%;
+    top:50%;
+    color:#000000;
+  }
+
+.addButton:hover{
+    cursor:pointer;
+}
+
+.img-like:hover{
+    cursor: pointer;
+}
+
+.detailCard{
+    font-family: "Varela Round";
+}
+
+.file-upload{
+    position: relative;
+    top:42%;
+    margin: auto;
+}
+.form-control{
+    margin: 30px 0;
+    width: 100%;
+}
+
