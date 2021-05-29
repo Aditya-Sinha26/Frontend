@@ -13,11 +13,11 @@ export const startAuth = () => {
     }
 }
 
-export const authSuccess = (uid) => {
+export const authSuccess = (username) => {
     console.log("success");
     return {
         type: actionTypes.AUTH_SUCCESS,
-        userId: uid
+        username: username
     }
 }
 

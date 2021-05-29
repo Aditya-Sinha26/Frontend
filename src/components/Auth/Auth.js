@@ -3,7 +3,7 @@ import "./Auth.css"
 import authContext from "../../store/context/auth";
 import Spinner from "../Spinner/Spinner";
 import { Redirect } from 'react-router';
-import {authentication, checkAuthentication} from "./utility"
+import { register, login } from "./utility"
 
 
 const Auth = (props) => {
@@ -26,7 +26,11 @@ const Auth = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        authentication(email,name,username, password, dispatch, signin);
+        if(signin){
+            login(email, password, dispatch)
+        }else{
+            register(email, name, username, password, dispatch);
+        }
         
     }
     // userCredentials.user.uid
@@ -51,9 +55,6 @@ const Auth = (props) => {
         }
     }, [email, password, name, username, signin]);
 
-    useEffect(() => {
-        checkAuthentication(dispatch);
-    },[dispatch])
 
     let auth = <React.Fragment>
                     <div className="container Auth">

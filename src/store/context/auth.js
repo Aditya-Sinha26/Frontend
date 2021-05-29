@@ -5,10 +5,10 @@ const AuthContext = React.createContext();
 
 export const AuthContextProvider = (props) => {
     const [state, dispatch] = useReducer(authReducer, {
-        isAuth: false,
         loading: false,
         error: null,
-        userId: null
+        username: null,
+        isAuth: localStorage.getItem('auth'),
     })
 
 
