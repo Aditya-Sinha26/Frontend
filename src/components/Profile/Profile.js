@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Images from "./Images";
 import Info from "./Info";
 import authContext from "../../store/context/auth";
@@ -19,6 +20,7 @@ import authContext from "../../store/context/auth";
 
 
 const Profile = (props) => {
+    const { state: authState} = useContext(authContext);
     const [state, setState] = useState({
         user:{
             followers: [],
@@ -26,7 +28,8 @@ const Profile = (props) => {
         },
         posts: []
      })
-
+     const { username } = useParams();
+     console.log(username);
     // useEffect(() => {
     //     getProfile()
     //     .then(res => {
@@ -37,7 +40,10 @@ const Profile = (props) => {
     //const isSmall = useMediaQuery({ query: '(max-width: 900px)' });
 
     return <div className="bg-white pb-5 mb-5 shadow-lg mx-auto rounded" style = {{maxWidth: '900px'}}>
-        <Info data = {state} />
+        <Info
+            data = { state }
+            same = { username === authState.username }
+        />
         <Images />
         </div> 
         

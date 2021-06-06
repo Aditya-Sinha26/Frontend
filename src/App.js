@@ -11,14 +11,14 @@ import Sidebar from "./components/Sidebar/Sidebar";
 const App = (props) => {
 
   const {state} = useContext(AuthContext);
-  console.log(state.isAuth);
+
   return (
     <>
       <Navbar />
       <Sidebar />
       <Switch>
         {!state.isAuth && <Route path="/auth" exact component={Auth}></Route>}
-        {state.isAuth && <Route path="/profile" component={Profile} />}
+        {state.isAuth && <Route path="/profile/:username" component={Profile} />}
         {state.isAuth && <Route path="/feed" component={Feed} />}
         <Redirect to={state.isAuth ? "/feed" : "/auth"} />
       </Switch>

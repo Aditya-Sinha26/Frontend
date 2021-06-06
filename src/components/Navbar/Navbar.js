@@ -8,7 +8,8 @@ const Navbar = (props) => {
 
     const {state:authState} = useContext(AuthContext);
 
-    return (<nav className="navbar navbar-expand-lg fixed-top justify-content-between navbar-dark bg-blue">
+    return (
+        <nav className="navbar navbar-expand-lg fixed-top justify-content-between navbar-dark bg-blue">
                 {authState.isAuth && <button className="navbar-toggler" onClick={props.toggle} type="button">
                     <span className="navbar-toggler-icon"></span>
                 </button>}
@@ -30,7 +31,8 @@ const Navbar = (props) => {
                             href="/" type="button">Logout</a>
                     </div>
                 </div>}
-            </nav>);
+            </nav>
+    );
 }
 
 export default Navbar;

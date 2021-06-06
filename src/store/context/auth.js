@@ -7,7 +7,7 @@ export const AuthContextProvider = (props) => {
     const [state, dispatch] = useReducer(authReducer, {
         loading: false,
         error: null,
-        username: null,
+        username: 'test',
         isAuth: localStorage.getItem('auth'),
     })
 

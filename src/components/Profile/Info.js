@@ -1,46 +1,61 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Info.css";
 import firebase from "../../firebase";
 import * as actions from "../../store/actions/auth"
-import AuthContext from "../../store/context/auth";
-import { Redirect } from "react-router";
+import UploadModal from "../Modal/Modal";
 
-const logout = (dispatch) => {
-    firebase.auth().signOut()
-        .then(() => {
-            console.log("successful");
-            dispatch(actions.logout());
-        })
+const upload = () => {
+    
 }
 
-const Info = ({ data }) => {
-    const classes={};
+const editProfile = () =>{
+    
+}
 
-    const {state, dispatch} = useContext(AuthContext);
+const Info = ({ data, same }) => {
+    const classes={};
+    const [modal, setModal] = useState({
+        show: false,
+        caption: false,
+    });
     
     return(
-        <div class="container pt-3 info d-flex">
-    <div class="card p-3">
-        <div class="d-flex align-items-center justify-content-around">
-            <div class="image"> 
-                <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded img" /> 
-            </div>
-            <div class=" details ml-3 w-50">
-                <h4 class="mb-0 mt-0">Alex Morrision</h4> <span className="username">Senior Journalist</span>
-                <div class="p-2 mt-2 bg-primary d-flex justify-content-around rounded text-white stats">
-                    <div class="d-flex flex-column"> <span class="articles">Posts</span> <span class="number1">38</span> </div>
-                    <div class="d-flex flex-column"> <span class="followers">Followers</span> <span class="number2">980</span> </div>
-                    <div class="d-flex flex-column"> <span class="rating">Following</span> <span class="number3">89</span> </div>
+        <>
+            <UploadModal
+                modal={modal}  
+                closeModal={() => setModal({show: false, caption: false})} 
+            />
+            <div className="container pt-3 info d-flex">
+                <div className="card p-3">
+                    <div className="d-flex align-items-center justify-content-around">
+                        <div className="image"> 
+                            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="" className="rounded img" /> 
+                        </div>
+                        <div className=" details ml-3 w-50">
+                            <h4 className="mb-0 mt-0">Alex Morrision</h4> <span className="username">Senior Journalist</span>
+                            <div className="p-2 mt-2 bg-primary d-flex justify-content-around rounded text-white stats">
+                                <div className="d-flex flex-column"> <span className="articles">Posts</span> <span className="number1">38</span> </div>
+                                <div className="d-flex flex-column"> <span className="followers">Followers</span> <span className="number2">980</span> </div>
+                                <div className="d-flex flex-column"> <span className="rating">Following</span> <span className="number3">89</span> </div>
+                            </div>
+                            <div className="button mt-2 d-flex flex-row align-items-center"> 
+                                <button 
+                                    onClick={() => setModal({show: true, caption: false})}
+                                    className="btn btn-sm btn-outline-primary w-100">
+                                    { same ? "Edit Profile Pic" : "Follow"}
+                                </button> 
+                                <button 
+                                    onClick={() => setModal({show: true, caption: true})}
+                                    className="btn btn-sm btn-primary w-100 ml-2">
+                                    { same ? "Add Post" : "Message"}
+                                </button> 
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="button mt-2 d-flex flex-row align-items-center"> 
-                    <button class="btn btn-sm btn-outline-primary w-100">Edit Profile</button> 
-                    <button class="btn btn-sm btn-primary w-100 ml-2">Add Post</button> 
-                </div>
             </div>
-        </div>
-    </div>
-</div>
-    )
+        </>
+    );
 }
 
 export default Info;
