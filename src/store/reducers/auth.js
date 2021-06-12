@@ -6,6 +6,7 @@ const reducer = (state, action) => {
         case actionTypes.START_AUTH:
             return{...state, loading: true}
         case actionTypes.AUTH_SUCCESS:
+            localStorage.setItem('username', action.username);
             return{ ...state, loading: false, username: action.username, isAuth: true }
         case actionTypes.AUTH_FAIL:
             return{ ...state, loading: false, error: action.error}

@@ -34,15 +34,6 @@ const Feed=(props)=>{
 
     return(
         <>
-            <Modal show={show} closeModal={closeModal} upload={upload}>
-            <form>
-                <div className="form-group">
-                    <input onChange={(event) => selectFile(event)} type="file" className="form-control-file" id="exampleFormControlFile1" />
-                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Caption" value={caption} onChange={(event) => setCaption(event.target.value)}></textarea>
-                </div>
-            </form>
-
-            </Modal>
             <div className="feed-header">
                 <Navbar>
                     <span>

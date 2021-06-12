@@ -1,7 +1,6 @@
 .post{
     max-width: 100px;
     height: 100px;
-    background-color: black;
 }
 
 @media (min-width: 430px) {

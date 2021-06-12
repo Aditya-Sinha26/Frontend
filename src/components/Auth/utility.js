@@ -27,7 +27,9 @@ export const login = async (email, password, dispatch) => {
     }
 }
 
-export const logout = async (dispatch) => {
+export const logout = async (event, dispatch) => {
+    event.preventDefault();
     localStorage.removeItem('auth');
+    localStorage.removeItem('username');
     dispatch(actions.logout());
 }
