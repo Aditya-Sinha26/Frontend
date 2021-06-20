@@ -24,6 +24,7 @@
     z-index: 1050;
     max-width: 200px;
     left: -200px;
+    top: 0;
     transition: transform 0.5s;
 }
 

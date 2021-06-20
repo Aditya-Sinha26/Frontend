@@ -24,7 +24,7 @@ const Navbar = (props) => {
                             activeClassName="bg-white text-dark rounded" >Feed</NavLink>
                         <NavLink to="/orders" 
                             className="nav-item nav-link text-light"
-                            activeClassName="bg-warning text-dark rounded" >Orders</NavLink>
+                            activeClassName="bg-warning text-dark rounded" >Saved</NavLink>
                         <a 
                             className="nav-item nav-link text-light" 
                             onClick={(event) => logout(event, authDispatch)} 

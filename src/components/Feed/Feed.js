@@ -53,7 +53,7 @@ const Feed=(props)=>{
                     </span>
                 </Navbar>
             </div>
-            <div className="feed-body">
+            <div className="feed-body mt-4">
                 <Display/>
             </div>
         </>

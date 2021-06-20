@@ -7,15 +7,20 @@ import Feed from './components/Feed/Feed';
 import AuthContext from "./store/context/auth";
 import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
+import { useState } from "react";
 
 const App = (props) => {
-
+  const [show, setShow] = useState(false);
   const {state} = useContext(AuthContext);
+
+  const toggle = () => {
+    setShow((prevState) => !prevState);
+  }
 
   return (
     <>
-      <Navbar />
-      <Sidebar />
+      <Navbar toggle={toggle}/>
+      <Sidebar show={show} toggle={toggle}/>
       <Switch>
         {!state.isAuth && <Route path="/auth" exact component={Auth}></Route>}
         {state.isAuth && <Route path="/profile/:username" component={Profile} />}

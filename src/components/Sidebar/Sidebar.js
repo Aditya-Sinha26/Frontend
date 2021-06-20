@@ -6,7 +6,7 @@ import AuthContext from "../../store/context/auth";
 
 const Sidebar = (props) => {
     
-    let classes = "container bg-primary sidebar"
+    let classes = "container bg-blue sidebar"
     if(props.show){
         classes = classes + " slide";
     }
@@ -22,26 +22,26 @@ const Sidebar = (props) => {
         <>
         <div className={backdrop} onClick={props.toggle} />
         <div className={classes}>
-            <button onClick={props.toggle} type="button" className="close cross">
-                <span className="text-white">&times;</span>
+            <button onClick={props.toggle} type="button" className="close text-white cross">
+            <i class="fas fa-times"></i>
             </button>
-            <p className="text-light h4 logo">Zwiggy</p>
+            <p className="text-light h4 logo">Instagram</p>
             <ul className="list-group list-group-flush ">
-                <NavLink to="stores" 
+                <NavLink to={`/profile/${localStorage.getItem('username')}`} 
                     onClick={props.toggle}
-                    className="list-group-item bg-primary text-light"
-                    activeClassName="bg-warning text-dark rounded" >Stores</NavLink>
-                <NavLink to="cart" 
+                    className="list-group-item text-decoration-none border-0 bg-blue text-light"
+                    activeClassName="bg-white text-dark rounded" >Profile</NavLink>
+                <NavLink to="/feed" 
                     onClick={props.toggle}
-                    className="list-group-item bg-primary text-light"
-                    activeClassName="bg-warning text-dark rounded" >Cart</NavLink>
-                <NavLink to="orders" 
+                    className="list-group-item text-decoration-none bg-blue border-0 text-light"
+                    activeClassName="bg-white text-dark rounded" >Feed</NavLink>
+                <NavLink to="/saved" 
                     onClick={props.toggle}
-                    className="list-group-item bg-primary text-light"
-                    activeClassName="bg-warning text-dark rounded" >Orders</NavLink>
+                    className="list-group-item text-decoration-none bg-blue border-0 text-light"
+                    activeClassName="bg-white text-dark rounded" >Saved</NavLink>
                 <a href="/" 
                     // onClick={(event) => {props.toggle();logout(event, authDispatch)}}
-                    className="list-group-item bg-primary text-light">Logout</a>
+                    className="list-group-item text-decoration-none bg-blue text-light">Logout</a>
             </ul>
         </div>
         </>
