@@ -44,7 +44,7 @@ const Profile = (props) => {
     return <div className="bg-white pb-5 mb-5 shadow-lg mx-auto rounded" style = {{maxWidth: '900px'}}>
         <Info
             data = { user }
-            same = { username === authState.username }
+            same = { username === localStorage.getItem('username') }
             updatedProfile = {() => (getProfile(username, setUser, setPosts))}
         />
         <Images posts={posts} />

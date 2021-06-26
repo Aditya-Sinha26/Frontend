@@ -8,7 +8,7 @@ const upload = async (file, caption, event, closeModal, path, updatedProfile) =>
     const formData = new FormData()
     formData.append('file', file);
     formData.append('caption', caption);
-    formData.append('username', 'test');
+    formData.append('username', localStorage.getItem('username'));
     event.preventDefault();
     // console.log(file);
     await axios.post(path, formData);
