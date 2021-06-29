@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:3001',
+    baseURL: 'https://picbox-mern.herokuapp.com/',
     withCredentials: true,
 })
 

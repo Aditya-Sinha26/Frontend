@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Images from "./Images";
@@ -8,7 +8,7 @@ import authContext from "../../store/context/auth";
 const getProfile = async (username, setUser, setPosts) => {
     console.log(username);
     const res = await axios({
-            url: "http://localhost:3001/user/profile",
+            url: "/user/profile",
             method: 'POST',
             data: {
                 username: username
