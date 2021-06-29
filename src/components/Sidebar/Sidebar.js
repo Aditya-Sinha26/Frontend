@@ -25,7 +25,7 @@ const Sidebar = (props) => {
             <button onClick={props.toggle} type="button" className="close text-white cross">
             <i class="fas fa-times"></i>
             </button>
-            <p className="text-light h4 logo">Instagram</p>
+            <p className="text-light h4 logo">Picbox</p>
             <ul className="list-group list-group-flush ">
                 <NavLink to={`/profile/${localStorage.getItem('username')}`} 
                     onClick={props.toggle}
@@ -35,6 +35,10 @@ const Sidebar = (props) => {
                     onClick={props.toggle}
                     className="list-group-item text-decoration-none bg-blue border-0 text-light"
                     activeClassName="bg-white text-dark rounded" >Feed</NavLink>
+                <NavLink to="/search" 
+                    onClick={props.toggle}
+                    className="list-group-item text-decoration-none bg-blue border-0 text-light"
+                    activeClassName="bg-white text-dark rounded" >Search</NavLink>
                 <NavLink to="/saved" 
                     onClick={props.toggle}
                     className="list-group-item text-decoration-none bg-blue border-0 text-light"

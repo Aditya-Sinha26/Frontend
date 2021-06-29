@@ -13,7 +13,7 @@ const Navbar = (props) => {
                 {authState.isAuth && <button className="navbar-toggler" onClick={props.toggle} type="button">
                     <span className="navbar-toggler-icon"></span>
                 </button>}
-                <h1 className="navbar-brand h1" href="/">Instagram</h1>
+                <h1 className="navbar-brand h1" href="/">Picbox</h1>
                 {authState.isAuth && <div className="collapse navbar-collapse justify-content-end">
                     <div className="navbar-nav">
                         <NavLink to={`/profile/${localStorage.getItem('username')}`} 
