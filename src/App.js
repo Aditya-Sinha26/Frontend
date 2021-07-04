@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Search from "./components/Search/Search";
 import { useState } from "react";
+import Post from "./components/Post/Post";
 
 const App = (props) => {
   const [show, setShow] = useState(false);
@@ -27,6 +28,7 @@ const App = (props) => {
         {state.isAuth && <Route path="/profile/:username" component={Profile} />}
         {state.isAuth && <Route path="/search" component={Search} />}
         {state.isAuth && <Route path="/feed" component={Feed} />}
+        {state.isAuth && <Route path="/post/:id" component={Post} />}
         <Redirect to={state.isAuth ? "/feed" : "/auth"} />
       </Switch>
     </>

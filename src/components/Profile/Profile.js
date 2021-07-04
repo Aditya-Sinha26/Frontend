@@ -6,7 +6,6 @@ import Info from "./Info";
 import authContext from "../../store/context/auth";
 
 const getProfile = async (username, setUser, setPosts) => {
-    console.log(username);
     const res = await axios({
             url: "/user/profile",
             method: 'POST',
@@ -39,7 +38,7 @@ const Profile = (props) => {
      
     useEffect(() => {
         getProfile(username, setUser, setPosts); 
-    },[]);
+    },[ username ]);
 
     return <div className="bg-white pb-5 mb-5 shadow-lg mx-auto rounded" style = {{maxWidth: '900px'}}>
         <Info

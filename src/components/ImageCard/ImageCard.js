@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeReviewCard(props) {
     const history = useHistory();
   const classes = useStyles();
-  const [like, setLike] = React.useState(props.likes.includes(localStorage.getItem('username')));
+  const [like, setLike] = React.useState(props.hasLiked);
 
   const likePost = () => {
       if(like){
@@ -73,7 +73,7 @@ export default function RecipeReviewCard(props) {
   }
 
   return (
-    <Card className={classes.root + ' mx-auto shadow'}>
+    <Card className={classes.root + ' mx-auto'}>
       <CardHeader
         role="button"
         onClick={() => history.push(`/profile/${localStorage.getItem('username')}`)}
@@ -104,7 +104,7 @@ export default function RecipeReviewCard(props) {
           <FavoriteIcon color={like?"secondary":"default"} onClick={likePost}/>
         </IconButton>
         <IconButton aria-label="share">
-          <CommentIcon />
+          <CommentIcon onClick={() => history.push(`/post/${props.postId}`)} />
         </IconButton>
         <IconButton aria-label="share">
           <ShareIcon />

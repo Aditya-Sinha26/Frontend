@@ -1,12 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import axios from '../../axios';
 import InfiniteScroll from "react-infinite-scroll-component";
-import RenderCard from './CardComponent';
 import './Feed.css';
 import ImageCard from "../ImageCard/ImageCard"
 import { useRef } from 'react';
-
-const baseUrl='https://picsum.photos/v2/list?page=';
 
 const Display=(props)=>{
 
@@ -25,7 +22,7 @@ const Display=(props)=>{
             method: 'Post',
             url: '/post/',
             data: {
-                page, limit: 3
+                page, limit: 3, username: localStorage.getItem('username')
             }
         })
         .then(res=>{
@@ -50,22 +47,24 @@ const Display=(props)=>{
           dataLength={list.length}
           next={fetchMoreData}
           hasMore={hasMore.current}
-          loader={<span className="fa fa-spinner fa-pulse fa-3x fa-fw load" style={{color: "#010067"}}></span>}
         >
            { list.map((res,i)=>{
                 return(
                     <ImageCard 
                         key={i}
-                        img_src={res.post.url} 
-                        author={res.user.username} 
-                        profile_img={res.user.profileImg}
-                        date={res.post.date}
-                        likes={res.post.likes} 
-                        caption={res.post.caption}
-                        postId={res.post['_id']}
+                        img_src={res.url} 
+                        author={res.author} 
+                        profile_img={res.profileImg}
+                        date={res.date}
+                        likes={res.totalLikes} 
+                        caption={res.caption}
+                        postId={res['_id']}
+                        hasLiked={res.hasLiked}
                     />
                 );
             })}
+            {hasMore.current && <div class="spinner-grow text-primary" role="status">
+            </div>}
             </InfiniteScroll>
         );
 }
